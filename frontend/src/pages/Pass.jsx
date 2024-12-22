@@ -20,7 +20,7 @@ const handleSubmit = async (e) => {
   return (
     <div className='container'>
     <div className="form">
-      <h1>Enter Access Key</h1>
+      <h1>Key</h1>
       <input
         type="password"
         name="pass"
@@ -28,7 +28,10 @@ const handleSubmit = async (e) => {
         onChange={handleChange}
       />
       <button onClick={handleSubmit}>Enter</button>
+      
     </div>
+    <br/>
+    <div className='center'><h4>If you want to create a new set of notes enter a new key as per your choice or else if you already have then enter it accordingly. </h4></div>
     </div>
   );
 };
