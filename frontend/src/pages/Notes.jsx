@@ -8,6 +8,7 @@ import addIcon from "../assets/plus.png";
 import GenerateI from "../assets/generate.png";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import removeMarkdown from "markdown-to-text";
+import Loading from '../assets/loading.gif'
 
 const Notes = () => {
   const apiKey = import.meta.env.VITE_KEY;
@@ -20,10 +21,7 @@ const Notes = () => {
   const location = useLocation();
   const pass = location.state;
 
-  const togglePopup = () => {
-    setIsPopupOpen(!isPopupOpen);
-  };
-
+  
   const navigate = useNavigate();
   useEffect(() => {
     const fetchNotes = async () => {
@@ -60,17 +58,24 @@ const Notes = () => {
 
   const Generate = async (text) => {
     try {
+      setIsPopupOpen(true);
       const prompt = `How do I seamlessly finish the task and get the most out of it, the task is ${text} in a brief but in multiple paragraphs not points strictly`;
       const result = await model.generateContent([prompt]);
       const stringres = result.response.text();
       const refinedTxt=removeMarkdown(stringres)
 
       setPopupContent(refinedTxt); // Set popup content
-      setIsPopupOpen(true); // Open popup
+       // Open popup
     } catch (err) {
       console.error("Error generating content:", err);
     }
   };
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+    
+    setPopupContent("")
+  };
+
 
   return (
     <div className="note-container">
@@ -134,6 +139,7 @@ const Notes = () => {
             </button>
             <div className="popup-content">
               <h2>Generated Response</h2>
+              {!popupContent&&<div><img src={Loading} alt="Loading"/></div>}
               <p>{popupContent}</p>
             </div>
           </div>
