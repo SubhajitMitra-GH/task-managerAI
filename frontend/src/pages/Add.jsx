@@ -7,7 +7,7 @@ import './Add.css'
 const Add = () => {
   const location = useLocation();
 const pass2 = location.state.pass;
-    
+     const [isLoading, setIsLoading] = useState(false);
   const[notes,setNotes]=useState({
     header:"",
     subText:"",
@@ -25,7 +25,7 @@ const pass2 = location.state.pass;
   })
   const handleClick=async(e)=>{
     e.preventDefault();
-   
+    setIsLoading(true); // Set loading state to true
     try{
     await axios.post("https://task-managerai-backend.onrender.com/tasks",notes);
     navigate("/notes",{state:{pass:notes.pass}})
@@ -33,6 +33,9 @@ const pass2 = location.state.pass;
     }
     catch(err){
       console.log(err)
+    }
+    finally {
+      setIsLoading(false); // Reset loading state
     }
 
   }
@@ -64,7 +67,9 @@ const pass2 = location.state.pass;
         <option value="Urgent">Urgent</option>
         <option value="Other">Other</option>
       </select>
-      <button onClick={handleClick}>Submit</button>       
+      <button onClick={handleClick} disabled={isLoading}>
+          {isLoading ? "Loading..." : "Submit"}
+        </button>   
    </div>
    </div>
   )
