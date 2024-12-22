@@ -93,7 +93,9 @@ const Notes = () => {
       </div>
       <div className="notes">
         {notes.length === 0 ? (
-          <p>No items present</p>
+          <div className="alt">
+          <p>No items present.</p>
+          </div>
         ) : (
           notes.map((note) => (
             <div key={note._id} className="note">
