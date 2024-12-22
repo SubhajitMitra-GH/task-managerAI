@@ -26,7 +26,7 @@ const Notes = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await axios.post("http://localhost:8000/tasks/find", pass);
+        const res = await axios.post("https://task-managerai-backend.onrender.com/tasks/find", pass);
         setNotes(res.data);
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ const Notes = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/tasks/${id}`);
+      await axios.delete(`https://task-managerai-backend.onrender.com/tasks/${id}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -93,9 +93,9 @@ const Notes = () => {
       </div>
       <div className="notes">
         {notes.length === 0 ? (
-          <div className="alt">
+          
           <p>No items present.</p>
-          </div>
+         
         ) : (
           notes.map((note) => (
             <div key={note._id} className="note">

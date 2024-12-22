@@ -15,7 +15,7 @@ const Update = () => {
 
   useEffect(()=>{
     const getterf = async()=>{
-    const res=await axios.post(`http://localhost:8000/tasks/find/${noteId}`)
+    const res=await axios.post(`https://task-managerai-backend.onrender.com/tasks/find/${noteId}`)
     setPlace(res.data)
     
    

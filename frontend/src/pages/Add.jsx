@@ -27,7 +27,7 @@ const pass2 = location.state.pass;
     e.preventDefault();
    
     try{
-    await axios.post("http://localhost:8000/tasks",notes);
+    await axios.post("https://task-managerai-backend.onrender.com/tasks",notes);
     navigate("/notes",{state:{pass:notes.pass}})
  
     }
