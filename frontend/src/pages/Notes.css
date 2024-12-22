@@ -55,14 +55,16 @@
     max-width: 90%;
     font-size: x-large;
     position: relative;
+    overflow: auto;
   }
   
   .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none;
-    border: none;
+    background-color: wheat;
+    border-radius: 50%;
+    width: 22px;
     font-size: 20px;
     cursor: pointer;
   }
@@ -303,5 +305,10 @@ align-items: center;
     }
     .date{
       width: 100px;
+    }
+    .popup{
+      width: 80vw;
+      height: 60vh;
+      overflow: auto;
     }
 }
