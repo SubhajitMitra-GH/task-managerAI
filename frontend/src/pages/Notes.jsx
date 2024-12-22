@@ -38,7 +38,7 @@ const Notes = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://task-managerai-backend.onrender.com/tasks/${id}`);
-      window.location.reload();
+      setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
     } catch (err) {
       console.log(err);
     }
