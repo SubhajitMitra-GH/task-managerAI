@@ -32,7 +32,7 @@ const Update = () => {
     setIsLoading(true); // Set loading state to true
 
     try {
-      await axios.put(`http://localhost:8000/tasks/${noteId}`, notes);
+      await axios.put(`http://task-managerai-backend.onrender.com/tasks/${noteId}`, notes);
       navigate("/notes", { state: { pass: place.pass } });
     } catch (err) {
       console.error(err);
